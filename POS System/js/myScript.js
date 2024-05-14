@@ -14,7 +14,7 @@ function login() {
 
     for(var i = 0; i < userArray.length; i++){
         if (username === userArray[i][0] && password === userArray[i][1]) {
-            window.location.href = "index.html";
+            window.location.href = "home.html";
         } else {
             alert("Incorrect Username Or Password");
             count++;
