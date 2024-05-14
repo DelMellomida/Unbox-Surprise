@@ -474,7 +474,8 @@ html {
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    padding: 5% 10%;
+    padding: 3% 10%;
+    overflow: hidden;
 }
 
 .contact .contact-left-content{
@@ -496,6 +497,8 @@ html {
 
 .contact h2{
     font-size: 25px;
+    color: black;
+    text-shadow: #333333;
 }
 
 .contact form{
@@ -521,6 +524,10 @@ html {
     display: flex;
     flex-direction: column;
     font-size: 50px;
+}
+
+.contact .icons a:link, .contact .icons i{
+    color: black !important;
 }
 
 @media (max-width: 768px){
