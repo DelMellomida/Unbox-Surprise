@@ -326,6 +326,10 @@ html {
     text-align: center;
 }
 
+.box:hover{
+    box-shadow: 2px 2px #333333;
+}
+
 .box:hover .pop-out-box {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
@@ -414,8 +418,8 @@ html {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    display: none; /* Initially hide the popup */
-    z-index: 1000; /* Ensure the popup is above other elements */
+    display: none;
+    z-index: 1000; 
     width: 35%;
     margin: 10px;
 }
