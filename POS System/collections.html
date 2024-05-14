@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unbox Surprise</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon_io//favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon_io//favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" type="text/css" href="/css/myStyles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Freeman&family=Teachers:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div class="navbar stay">
+            <nav class="menu-bar">
+                <div class="logo-container">
+                    <a href="index.html"><img class="logo-design" src="/assets/logo.png"></a>
+                </div>
+                <div class="menu-item-container">
+                    <li class="menu-item"><a href="home.html">Home</a></li>
+                    <li class="menu-item"><a href="#">About</a></li>
+                    <li class="menu-item"><a href="collections.html">Products</a></li>
+                    <li class="menu-item"><a href="contact.html">Contact</a></li>
+                    <li class="cart-btn" onclick = ""><a><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li class="menu-item"><a href="login.html"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+                    <li class="menu hidden"><i class="fa-solid fa-bars"></i></li>
+                    <li class="cancel-btn"><i class="fa-solid fa-xmark"></i></li>
+                    <div class="cart-popup">
+                        <ul class="cart-items">
+                            <li class="cart-item" id="cart-item"></li>
+                        </ul>
+
+                        <h3 class="total">Total: </h3>
+
+                        <input type="button" value="Buy" onclick="bought()" class="totalBtn">
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content collections">
+        <h1>Unbox Surprise</h1>
+        <h2>The art of giving, elevated.</h2>
+        <br>
+        <img src="/assets/gift-unscreen.gif">
+    </div>
+
+    <div class="products" id="indulgent">
+        <h1 style="padding-top: 1.5%;">Products</h1>
+        <nav class="products-categories">
+            <ul>
+                <li><a href="#indulgent">Indulgent Delights</a></li>
+                <li><a href="#handcrafted">Handcrafted Luxuries</a></li>
+                <li><a href="#personalized">Personalized Treasures</a></li>
+            </ul>
+        </nav>
+
+        <div class="products-box">
+            <h3>Indulgent Delights</h3>
+            <div class="products-container">
+                <div class="box">
+                    <img src="/assets/chocolates.png">
+                    <h2>Artisanal Chocolates</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="chocolate-options" id="chocolate-options">
+                            <option value="80">Regular Chocolate Bar</option>
+                            <option value="225">Box of Chocolates (Assorted)</option>
+                            <option value="300">Premium Chocolate Truffles</option>
+                        </select>
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 80</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="/assets/teaCoffee.png">
+                    <h2>Special Teas or Coffees</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="teaCoffee-options" id="teaCoffee-options">
+                            <option value="400">Premium Coffee Beans</option>
+                            <option value="250">Loose Leaf Tea</option>
+                            <option value="180">Instant Coffee</option>
+                        </select>
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 400</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="/assets/snacks.png">
+                    <h2>Gourmet Snacks</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="snacks-options" id="snacks-options">
+                            <option value="100">Premium Coffee Beans</option>
+                            <option value="75">Set of Pens</option>
+                            <option value="200">Planner</option>
+                        </select>
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 100</p>
+                    </div>
+                </div>
+            </div>
+            <div class="products-container">
+                <div class="box">
+                    <img src="/assets/baked.png">
+                    <h2>Baked Goods</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="cookies-baked-goods-options" id="cookies-baked-goods-options">
+                            <option value="150">Assorted Artisanal Cookies (Box of 12)</option>
+                            <option value="250">Gourmet Baked Goods Sampler</option>
+                            <option value="200">Customized Cookie Gift Box</option>
+                        </select>
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 150</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="/assets/jamHoney.png">
+                    <h2>Specialty Jam or Honey</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="honey-jam-options" id="honey-jam-options">
+                            <option value="180">Pure Raw Honey (250g)</option>
+                            <option value="220">Artisanal Fruit Jam (200g)</option>
+                            <option value="300">Gourmet Honey Gift Set</option>
+                        </select>
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 180</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="/assets/wine.png">
+                    <h2>Premium Alcohol</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="wine-champagne-options" id="wine-champagne-options">
+                            <option value="1500">French Champagne (750ml)</option>
+                            <option value="1200">Italian Red Wine (Bottle)</option>
+                            <option value="1800">Spanish Rioja Wine (750ml)</option>
+                        </select>
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 1500</p>
+                    </div>
+                </div>
+                <p id="handcrafted"></p>
+            </div>
+        </div>
+
+        <div class="products-box opposite">
+            <h3 style="padding-top: 1.5%; color: #333333">Handcrafted Luxuries</h3>
+            <div class="products-container">
+                <div class="box">
+                    <img src="/assets/candles.png">
+                    <h2>Handcrafted Candles</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="candle-options" id="candle-options">
+                            <option value="350">Scented Soy Candle</option>
+                            <option value="250">Decorative Beeswax Candle</option>
+                            <option value="500">Aromatherapy Candle Gift Set</option>
+                        </select>
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 350</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="/assets/bath.png">
+                    <h2>Luxury Bath Products</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="bath-products-options" id="bath-products-options">
+                            <option value="300">Handmade Bath Bombs</option>
+                            <option value="200">Organic Bath Salts</option>
+                            <option value="180">Moisturizing Body Butter</option>
+                        </select>                    
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 300</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="/assets/soap.png">
+                    <h2>Scented Soaps</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="soap-options" id="soap-options">
+                            <option value="120">Artisanal Lavender Soap Bar</option>
+                            <option value="200">Citrus Burst Handmade Soap</option>
+                            <option value="300">Floral Scented Soap Gift Set</option>
+                        </select>
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 120</p>
+                    </div>
+                </div>
+            </div>
+            <div class="products-container">
+                <div class="box">
+                    <img src="/assets/succulent.png">
+                    <h2>Miniature Succulents</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="succulent-options" id="succulent-options">
+                            <option value="150">Assorted Mini Succulent (Individual Pot)</option>
+                            <option value="400">Succulent Trio in Decorative Planter</option>
+                            <option value="300">DIY Mini Succulent Garden Kit</option>
+                        </select>
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 150</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="/assets/jewelry.png">
+                    <h2>Handmade Jewelry</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="jewelry-options" id="jewelry-options">
+                            <option value="500">Sterling Silver Pendant Necklace</option>
+                            <option value="350">Handcrafted Gemstone Earrings</option>
+                            <option value="800">Artisanal Beaded Bracelet Set</option>
+                        </select>
+                        
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 500</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="/assets/skincare.png">
+                    <h2>Organic Skincare</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="skincare-options" id="skincare-options">
+                            <option value="250">Organic Facial Cleanser</option>
+                            <option value="350">Natural Face Moisturizer</option>
+                            <option value="450">Botanical Body Scrub</option>
+                        </select>
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 250</p>
+                    </div>
+                </div>
+            </div>
+            <div class="products-container">
+                <div class="box">
+                    <img src="/assets/waxmelts.png">
+                    <h2>Handpoured Waxmelts</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="wax-melts-options" id="wax-melts-options">
+                            <option value="120">Vanilla Bean Wax Melts</option>
+                            <option value="150">Lavender Fields Wax Melts</option>
+                            <option value="180">Citrus Burst Wax Melts</option>
+                        </select>
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 120</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="/assets/vases.png">
+                    <h2>Unique Planters or Vases</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="planters-vases-options" id="planters-vases-options">
+                            <option value="200">Handcrafted Ceramic Planter</option>
+                            <option value="250">Vintage Glass Vase</option>
+                            <option value="300">Artisanal Terracotta Pot</option>
+                        </select>
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 200</p>
+                    </div>
+                </div>
+                <p id="personalized"></p>
+            </div>
+        </div>
+
+
+        <div class="products-box">
+            <h3 style="padding-top: 1.5%;">Personalized Treasures</h3>
+            <div class="products-container">
+                <div class="box">
+                    <img src="/assets/notecards.webp">
+                    <h2>Personalized Notecards</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="note-cards-options" id="note-cards-options">
+                            <option value="100">Set of 20 Personalized Note Cards</option>
+                            <option value="150">Set of 30 Personalized Note Cards</option>
+                            <option value="200">Set of 50 Personalized Note Cards</option>
+                        </select>
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 100</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="/assets/stationary.jpg">
+                    <h2>Custom Stationery</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="stationary-options" id="stationary-options">
+                            <option value="100">Notebook</option>
+                            <option value="75">Set of Pens</option>
+                            <option value="200">Planner</option>
+                        </select>
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 100</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="/assets/mug.jpg">
+                    <h2>Customized Mugs</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="mug-options" id="mug-options">
+                            <option value="150">Plain Ceramic Mug</option>
+                            <option value="300">Personalized Mug</option>
+                            <option value="225">Novelty Mug</option>
+                        </select>
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 150</p>
+                    </div>
+                </div>
+            </div>
+            <div class="products-container">
+                <div class="box">
+                    <img src="/assets/case.png">
+                    <h2>Customized Phone Case</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="phone-cases-options" id="phone-cases-options">
+                            <option value="150">Basic Custom Phone Case</option>
+                            <option value="250">Premium Custom Phone Case</option>
+                            <option value="350">Luxury Custom Phone Case</option>
+                        </select>
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 150</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="/assets/frame.png">
+                    <h2>Photo Frames & Album</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="photo-frames-options" id="photo-frames-options">
+                            <option value="150">Custom Engraved Photo Frame</option>
+                            <option value="250">Personalized Photo Album</option>
+                            <option value="350">Deluxe Customized Photo Frame Set</option>
+                        </select>                        
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 150</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="/assets/keychain.png">
+                    <h2>Engraved Keychains</h2>
+                    <div class="options">
+                        <h6>Options: </h6>
+                        <select name="keychains-options" id="keychains-options">
+                            <option value="100">Basic Engraved Keychain</option>
+                            <option value="200">Premium Engraved Keychain</option>
+                            <option value="300">Luxury Engraved Keychain</option>
+                        </select>                        
+                    </div>
+                    <button>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <div class="pop-out-box">
+                        <p>Php 100</p>
+                    </div>
+                </div>
+                <p id="handcrafted"></p>
+            </div>
+        </div>
+    </div>
+    <script src="/js/myScript.js"></script>
+</body>
+</html>

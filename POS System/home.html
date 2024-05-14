@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unbox Surprise</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon_io//favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon_io//favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" type="text/css" href="/css/myStyles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Freeman&family=Teachers:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <nav class="menu-bar">
+                <div class="logo-container">
+                    <a href="index.html"><img class="logo-design" src="/assets/logo.png"></a>
+                </div>
+                <div class="menu-item-container">
+                    <li class="menu-item"><a href="home.html">Home</a></li>
+                    <li class="menu-item"><a href="#">About</a></li>
+                    <li class="menu-item"><a href="collections.html">Products</a></li>
+                    <li class="menu-item"><a href="contact.html">Contact</a></li>
+                    <li class="cart-btn" onclick = ""><a><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li class="menu-item"><a href="login.html"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+                    <li class="menu hidden"><i class="fa-solid fa-bars"></i></li>
+                    <li class="cancel-btn"><i class="fa-solid fa-xmark"></i></li>
+                    <div class="cart-popup">
+                        <ul class="cart-items">
+                            <li class="cart-item" id="cart-item"></li>
+                        </ul>
+
+                        <h3 class="total">Total: </h3>
+
+                        <input type="button" value="Buy" onclick="bought()" class="totalBtn">
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content">
+        <h1>Unbox Surprise</h1>
+        <h2>The art of giving, elevated.</h2>
+        <br>
+        <img src="/assets/gift-unscreen.gif">
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="location-icons">
+                <a href=""><i class="fa-solid fa-location-dot"><span> 311 105 St. Soldier's Village Sta.Lucia, Pasig City</span></i></a>
+                <a href=""><i class="fa-solid fa-phone"><span> 09917951577</span></i></a>
+            </div>
+            <div class="social-icons">
+                <a href="https://web.facebook.com/"><i class="fa-brands fa-facebook"><span> Jhondel Jumuad Mellomida</span></i></a>
+                <a href="https://www.x.com"><i class="fa-brands fa-x-twitter"><span> OkayNoice69420</span></i></a>
+                <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"><span> jhndlmllmd</span></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/myScript.js"></script>
+</body>
+</html>
