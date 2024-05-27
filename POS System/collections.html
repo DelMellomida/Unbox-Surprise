@@ -28,18 +28,15 @@
                     <li class="menu-item"><a href="#">About</a></li>
                     <li class="menu-item"><a href="collections.html">Products</a></li>
                     <li class="menu-item"><a href="contact.html">Contact</a></li>
-                    <li class="cart-btn" onclick = ""><a><i class="fa-solid fa-cart-shopping"></i></a></li>
-                    <li class="menu-item"><a href="home.html"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+                    <li class="cart-btn menu-item" onclick = ""><a><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li class="menu-item"><a href="login.html"><i class="fa-solid fa-right-from-bracket"></i></a></li>
                     <li class="menu hidden"><i class="fa-solid fa-bars"></i></li>
                     <li class="cancel-btn"><i class="fa-solid fa-xmark"></i></li>
-                    <div class="cart-popup">
-                        <ul class="cart-items">
-                            <li class="cart-item" id="cart-item"></li>
-                        </ul>
-
-                        <h3 class="total">Total: </h3>
-
-                        <input type="button" value="Buy" onclick="bought()" class="totalBtn">
+                    <div id="cart-summary" class="cart-summary">
+                        <h2>Cart Summary</h2>
+                        <ul id="cart-items"></ul>
+                        <p>Total: Php <span id="cart-total">0.00</span></p>
+                        <button class="checkOutBtn">Buy</button>
                     </div>
                 </div>
             </nav>
@@ -51,6 +48,41 @@
         <h2>The art of giving, elevated.</h2>
         <br>
         <img src="/assets/gift-unscreen.gif">
+    </div>
+
+    <div class="notification hidden" id="notification">Item added to cart!</div>
+
+    <div class="checkout-container hidden">
+        <div class="checkout-content">
+            <div class="pic-container">
+                <img src="/assets/chocolates.png">
+            </div>
+            <form class="checkout">
+                <h1>Checkout</h1>
+                <table class="table-layout">
+                    <tr>
+                        <td><label>Mode of Payment</label></td>
+                        <td><select>
+                            <option>Visa</option>
+                            <option>GCash</option>
+                            <option selected>Cash</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td><label>Name</label></td>
+                        <td><input type="text" name="name" class="name"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Address</label></td>
+                        <td><input type="text" name="address" class="address"></td>
+                    </tr>
+                </table>
+                <div class="buttons">
+                    <input type="button" value="Submit" class="submit" onclick="bought()">
+                    <input type="button" value="Cancel" class="cancel">
+                </div>
+            </form>
+        </div>
     </div>
 
     <div class="products" id="indulgent">
@@ -77,8 +109,8 @@
                             <option value="300">Premium Chocolate Truffles</option>
                         </select>
                     </div>
-                    <button>
-                        <i class="fa-solid fa-cart-shopping"></i>
+                    <button onclick="showNotification('Item added to the cart')">
+                        <i class="fa-solid fa-cart-shopping" ></i>
                     </button>
                     <div class="pop-out-box">
                         <p>Php 80</p>
@@ -95,7 +127,7 @@
                             <option value="180">Instant Coffee</option>
                         </select>
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -113,7 +145,7 @@
                             <option value="200">Planner</option>
                         </select>
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -133,7 +165,7 @@
                             <option value="200">Customized Cookie Gift Box</option>
                         </select>
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -151,7 +183,7 @@
                             <option value="300">Gourmet Honey Gift Set</option>
                         </select>
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -169,7 +201,7 @@
                             <option value="1800">Spanish Rioja Wine (750ml)</option>
                         </select>
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -194,7 +226,7 @@
                             <option value="500">Aromatherapy Candle Gift Set</option>
                         </select>
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -212,7 +244,7 @@
                             <option value="180">Moisturizing Body Butter</option>
                         </select>                    
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -230,7 +262,7 @@
                             <option value="300">Floral Scented Soap Gift Set</option>
                         </select>
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -250,7 +282,7 @@
                             <option value="300">DIY Mini Succulent Garden Kit</option>
                         </select>
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -269,7 +301,7 @@
                         </select>
                         
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -287,7 +319,7 @@
                             <option value="450">Botanical Body Scrub</option>
                         </select>
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -307,7 +339,7 @@
                             <option value="180">Citrus Burst Wax Melts</option>
                         </select>
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -325,7 +357,7 @@
                             <option value="300">Artisanal Terracotta Pot</option>
                         </select>
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -335,7 +367,6 @@
                 <p id="personalized"></p>
             </div>
         </div>
-
 
         <div class="products-box">
             <h3 style="padding-top: 1.5%;">Personalized Treasures</h3>
@@ -351,7 +382,7 @@
                             <option value="200">Set of 50 Personalized Note Cards</option>
                         </select>
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -369,7 +400,7 @@
                             <option value="200">Planner</option>
                         </select>
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -387,7 +418,7 @@
                             <option value="225">Novelty Mug</option>
                         </select>
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -407,7 +438,7 @@
                             <option value="350">Luxury Custom Phone Case</option>
                         </select>
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -425,7 +456,7 @@
                             <option value="350">Deluxe Customized Photo Frame Set</option>
                         </select>                        
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -443,7 +474,7 @@
                             <option value="300">Luxury Engraved Keychain</option>
                         </select>                        
                     </div>
-                    <button>
+                    <button onclick="showNotification('Item added to the cart')">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                     <div class="pop-out-box">
@@ -454,6 +485,20 @@
             </div>
         </div>
     </div>
+    <footer>
+        <div class="footer-content">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="location-icons">
+                <span>New York, NY</span>
+                <span>London, UK</span>
+                <span>Tokyo, Japan</span>
+            </div>
+        </div>
+    </footer>
     <script src="/js/myScript.js"></script>
 </body>
 </html>
