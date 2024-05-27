@@ -27,19 +27,15 @@
                     <li class="menu-item"><a href="home.html">Home</a></li>
                     <li class="menu-item"><a href="#">About</a></li>
                     <li class="menu-item"><a href="collections.html">Products</a></li>
-                    <li class="menu-item"><a href="#">Contact</a></li>
-                    <li class="cart-btn" onclick = ""><a><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li class="menu-item"><a href="contact.html">Contact</a></li>
+                    <li class="cart-btn menu-item" onclick = ""><a><i class="fa-solid fa-cart-shopping"></i></a></li>
                     <li class="menu-item"><a href="login.html"><i class="fa-solid fa-right-from-bracket"></i></a></li>
                     <li class="menu hidden"><i class="fa-solid fa-bars"></i></li>
                     <li class="cancel-btn"><i class="fa-solid fa-xmark"></i></li>
-                    <div class="cart-popup">
-                        <ul class="cart-items">
-                            <li class="cart-item" id="cart-item"></li>
-                        </ul>
-
-                        <h3 class="total">Total: </h3>
-
-                        <input type="button" value="Buy" onclick="bought()" class="totalBtn">
+                    <div id="cart-summary" class="cart-summary">
+                        <h2>Cart Summary</h2>
+                        <ul id="cart-items"></ul>
+                        <p>Total: Php <span id="cart-total">0.00</span></p>
                     </div>
                 </div>
             </nav>
@@ -47,7 +43,7 @@
     </header>
     <section class="contact">
         <div class="contact-left-content">
-            <h1>Contact Me</h1><br>
+            <h1>Contact Us</h1><br>
             <form>
                 <table>
                     <label>Name</label><br>
@@ -63,7 +59,7 @@
                         <option value="other">Other(Specify Below)</option>
                     </select><br></br>
                     <label>Message</label><br>
-                    <textarea name="message" rows="4" cols="23">
+                    <textarea name="message" rows="3" cols="23">
                     </textarea><br><br>
                     <input type="button" id="submit" value="Submit">
                 </table>
