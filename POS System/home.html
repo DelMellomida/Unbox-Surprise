@@ -15,8 +15,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
 <body>
+    <!--Header Section-->
     <header>
         <div class="navbar">
             <nav class="menu-bar">
@@ -28,41 +30,164 @@
                     <li class="menu-item"><a href="#">About</a></li>
                     <li class="menu-item"><a href="collections.html">Products</a></li>
                     <li class="menu-item"><a href="contact.html">Contact</a></li>
-                    <li class="cart-btn" onclick = ""><a><i class="fa-solid fa-cart-shopping"></i></a></li>
-                    <li class="menu-item"><a href="index.html"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+                    <li class="cart-btn menu-item" onclick = ""><a><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li class="menu-item"><a href="login.html"><i class="fa-solid fa-right-from-bracket"></i></a></li>
                     <li class="menu hidden"><i class="fa-solid fa-bars"></i></li>
                     <li class="cancel-btn"><i class="fa-solid fa-xmark"></i></li>
-                    <div class="cart-popup">
-                        <ul class="cart-items">
-                            <li class="cart-item" id="cart-item"></li>
-                        </ul>
-
-                        <h3 class="total">Total: </h3>
-
-                        <input type="button" value="Buy" onclick="bought()" class="totalBtn">
+                    <div id="cart-summary" class="cart-summary">
+                        <h2>Cart Summary</h2>
+                        <ul id="cart-items"></ul>
+                        <p>Total: Php <span id="cart-total">0.00</span></p>
+                        <button value="Buy" class="checkOutBtn">Buy</button>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
 
-    <div class="content">
-        <h1>Unbox Surprise</h1>
-        <h2>The art of giving, elevated.</h2>
-        <br>
-        <img src="/assets/gift-unscreen.gif">
+    <!-- Hero Section -->
+    <div class="hero swiper">
+        <div class="carousel swiper-wrapper">
+            <div class="carousel-item swiper-slide" >
+                <img src="/assets/bgImage.jpg" alt="New Collection">
+                <div class="carousel-caption">
+                    <h2>Discover Our New Collection</h2>
+                    <button onclick="location.href='collections.html'">Shop Now</button>
+                </div>
+            </div>
+            <div class="carousel-item swiper-slide" >
+                <img src="/assets/bgImage2.jpg" alt="Special Offer">
+                <div class="carousel-caption">
+                    <h2>Special Offer: 20% Off</h2>
+                    <button onclick="location.href='collections.html'">Learn More</button>
+                </div>
+            </div>
+            <div class="carousel-item swiper-slide">
+                <img src="/assets/bgImage3.jpg" alt="Gift Ideas">
+                <div class="carousel-caption">
+                  <h2>Gift Ideas for Every Occasion</h2>
+                  <button onclick="location.href='collections.html'">Browse Gifts</button>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".swiper", {
+          spaceBetween: 30,
+          centeredSlides: true,
+          autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+      </script>
+
+    <!--Why Choose Us Section-->
+    <div class="why-choose-us">
+        <h1>Why Choose Unbox Surprise?</h1>
+        <div class="benefits-container">
+            <div class="benefit-box">
+                <i class="fas fa-check-circle"></i>  <h3>Curated with Care</h3>
+                <p>Our boxes are hand-picked with the finest products, ensuring a delightful unboxing experience.</p>
+            </div>
+            <div class="benefit-box">
+                <i class="fas fa-gift"></i>  <h3>Gifts for Every Occasion</h3>
+                <p>We offer a wide variety of boxes to perfectly suit any birthday, holiday, or special event.</p>
+            </div>
+            <div class="benefit-box">
+                <i class="fas fa-star"></i>  <h3>Top-Quality Products</h3>
+                <p>We partner with reputable brands to ensure every item in our boxes is exceptional.</p>
+            </div>
+        </div>
     </div>
 
+    <!--Testimonial Section-->
+    <div class="testimonial-container">
+        <h1>Testimonials</h1>
+        <div class="testimonial-wrapper">
+            <div class="testimonial-box">
+                <div class="testimonial-pic">
+                    <img src="https://images.pexels.com/photos/4927361/pexels-photo-4927361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                </div>
+                <div class="testimonial-content">
+                    <h3>Lisa Wilson</h3>
+                    <h5>Denver, CO</h5>
+                    <p>Unboxing my 'Cozy Night In' box was pure indulgence! The incredibly fluffy socks, rich and decadent gourmet hot chocolate, and calming aromatherapy candle were exactly what I needed for a perfectly relaxing evening. It was the ultimate pick-me-up after a long week - thanks Unbox Surprise for creating such a blissful experience!</p>
+                </div>
+            </div>
+            <div class="testimonial-box">
+                <div class="testimonial-pic">
+                    <img src="https://images.pexels.com/photos/6507483/pexels-photo-6507483.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                </div>
+                <div class="testimonial-content">
+                    <h3>David Blaine</h3>
+                    <h5>Los Angeles, CA</h5>
+                    <p>Unbox Surprise is my lifesaver for birthdays and holidays! They always have a box that fits the recipient's interests, and the surprise element makes it extra special. No more stressing about finding the perfect gift - Unbox Surprise takes care of everything!</p>
+                </div>
+            </div>
+            <div class="testimonial-box">
+                <div class="testimonial-pic">
+                    <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                </div>
+                <div class="testimonial-content">
+                    <h3>Emily Chen</h3>
+                    <h5>Austin, TX</h5>
+                    <p>I had a question about customizing a box for my niece's birthday, and the Unbox Surprise customer service team was amazing! They were super helpful and patient, and helped me create the perfect box for her. Not only was the gift a hit, but the entire experience was fantastic. Thanks Unbox Surprise!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="how-it-works">
+        <h1>How It Works</h1>
+        <div class="works-container">
+            <div class="work-step">
+                <i class="fas fa-check-circle"></i>
+                <h3>Choose Your Box</h3>
+                <p>Browse our wide selection of curated gift boxes to find the perfect one for your occasion or recipient's interests.</p>
+            </div>
+            <i class="fas fa-arrow-right arrow"></i>
+            <div class="work-step">
+                <i class="fas fa-gift"></i>
+                <h3>Add a Personal Touch</h3>
+                <p>(Optional) Include a personalized message and gift wrap to make your present extra special.</p>
+            </div>
+            <i class="fas fa-arrow-right arrow"></i>
+            <div class="work-step">
+                <i class="fas fa-truck"></i>
+                <h3>Relax and Unwind</h3>
+                <p>We handle everything else! Your beautifully packaged gift box will be delivered straight to your recipient's door.</p>
+            </div>
+        </div>
+        <a href="collections.html" class="how-it-works-btn">See All Boxes</a>
+    </section>
+    
+
+    <!--Footer Section-->
     <footer>
         <div class="footer-content">
-            <div class="location-icons">
-                <a href=""><i class="fa-solid fa-location-dot"><span> 311 105 St. Soldier's Village Sta.Lucia, Pasig City</span></i></a>
-                <a href=""><i class="fa-solid fa-phone"><span> 09917951577</span></i></a>
-            </div>
             <div class="social-icons">
-                <a href="https://web.facebook.com/"><i class="fa-brands fa-facebook"><span> Jhondel Jumuad Mellomida</span></i></a>
-                <a href="https://www.x.com"><i class="fa-brands fa-x-twitter"><span> OkayNoice69420</span></i></a>
-                <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"><span> jhndlmllmd</span></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="location-icons">
+                <span>New York, NY</span>
+                <span>London, UK</span>
+                <span>Tokyo, Japan</span>
             </div>
         </div>
     </footer>
