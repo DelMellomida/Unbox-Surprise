@@ -1,5 +1,7 @@
 var count = 1;
 var userArray = [["Jhondel", "1234"]];
+var userName;
+var userAddress;
 
 const productContainers = document.querySelectorAll('.box');
 
@@ -39,12 +41,12 @@ document.addEventListener("DOMContentLoaded", function() {
 productContainers.forEach(container => {
     container.addEventListener('mouseenter', () => {
         const popOutContainer = container.querySelector('.pop-out-box');
-        popOutContainer.style.opacity = '1'; // Show the pop-out container
+        popOutContainer.style.opacity = '1';
     });
 
     container.addEventListener('mouseleave', () => {
         const popOutContainer = container.querySelector('.pop-out-box');
-        popOutContainer.style.opacity = '0'; // Hide the pop-out container
+        popOutContainer.style.opacity = '0';
     });
 });
 
@@ -64,7 +66,6 @@ document.addEventListener("DOMContentLoaded", function() {
 var cart = [];
 
 document.addEventListener("DOMContentLoaded", function() {
-
     const addToCartButtons = document.querySelectorAll('.box button');
 
     addToCartButtons.forEach(button => {
@@ -99,55 +100,70 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function populateCartPopup() {
-    const cartItemsList = document.querySelector('.cart-items');
+    const cartItemsList = document.getElementById('cart-items');
     cartItemsList.innerHTML = '';
 
     cart.forEach(item => {
         const cartItemElement = document.createElement('li');
+        cartItemElement.classList.add('cart-item');
         
         const quantityContainer = document.createElement('div');
         quantityContainer.classList.add('quantity-container');
         
         const decreaseButton = document.createElement('button');
         decreaseButton.textContent = '-';
-        decreaseButton.classList.add('decrease-button');
+        decreaseButton.classList.add('quantity-decrease');
         decreaseButton.addEventListener('click', () => {
             if (item.quantity > 1) {
                 item.quantity--;
-                populateCartPopup();
-                updateTotalPrice();
+            } else {
+                cart = cart.filter(cartItem => cartItem !== item);
             }
+            populateCartPopup();
+            updateTotalPrice();
         });
-        
-        const quantityText = document.createElement('span');
-        quantityText.textContent = item.quantity;
-        quantityText.classList.add('quantity-text');
-        
+
         const increaseButton = document.createElement('button');
         increaseButton.textContent = '+';
-        increaseButton.classList.add('increase-button');
+        increaseButton.classList.add('quantity-increase');
         increaseButton.addEventListener('click', () => {
             item.quantity++;
             populateCartPopup();
             updateTotalPrice();
         });
-        
+
+        const quantityText = document.createElement('span');
+        quantityText.classList.add('quantity-text');
+        quantityText.textContent = item.quantity;
+
         quantityContainer.appendChild(decreaseButton);
         quantityContainer.appendChild(quantityText);
         quantityContainer.appendChild(increaseButton);
-        
-        cartItemElement.textContent = `${item.name} - ${item.options ? item.options + ' ' : ''}Php ${item.price} `;
+
+        cartItemElement.textContent = `${item.name} - Php ${item.price} (${item.options}) `;
         cartItemElement.appendChild(quantityContainer);
-        
+
         cartItemsList.appendChild(cartItemElement);
     });
 }
 
+function showNotification(message) {
+    const notification = document.getElementById('notification');
+    notification.textContent = message;
+    notification.classList.remove('hidden');
+
+    setTimeout(() => {
+        notification.classList.add('hidden');
+    }, 3000);
+}
 
 var cartBtn = document.querySelector(".cart-btn");
 var cancelBtn = document.querySelector(".cancel-btn");
 var menuItems = document.querySelectorAll(".menu-item");
-var cartPopup = document.querySelector(".cart-popup"); 
+var cartPopup = document.querySelector(".cart-summary"); 
+var checkOutBtn = document.querySelector(".checkOutBtn"); 
+var checkOutCancelBtn = document.querySelector(".cancel"); 
+var checkOutContainer = document.querySelector(".checkout-container");
 
 cartBtn.onclick = function(){
     cartBtn.style.display = "none";
@@ -168,6 +184,14 @@ cancelBtn.onclick = function(){
     cartPopup.style.display = "none";
 }
 
+checkOutBtn.onclick = function(){
+    checkOutContainer.classList.remove("hidden");
+}
+
+checkOutCancelBtn.onclick = function(){
+    checkOutContainer.classList.add("hidden");
+}
+
 
 function calculateTotalPrice() {
     let totalPrice = 0;
@@ -180,19 +204,29 @@ function calculateTotalPrice() {
 }
 
 function updateTotalPrice() {
-        const totalElement = document.querySelector('.cart-popup h3');
-        totalElement.textContent = `Total: Php ${calculateTotalPrice().toFixed(2)}`;
+    const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    document.getElementById('cart-total').textContent = totalPrice.toFixed(2);
 }
 
 updateTotalPrice();
 
 function bought() {
-    if (calculateTotalPrice().toFixed(2) !== '0.00') {
-        alert('Items Bought Successfully');
-        cart = []; 
-        populateCartPopup();
-        updateTotalPrice();
-    } else {
-        alert('There is no item in the cart');
+    var name = checkOutContainer.querySelector('.checkout .table-layout .name').value;
+    var address = checkOutContainer.querySelector('.checkout .table-layout .address').value;
+    if(name === "" || address === ""){
+        alert("Please input all required fields.")
     }
+    else{
+        if (calculateTotalPrice().toFixed(2) !== '0.00') {
+            alert('Items Bought Successfully');
+            cart = []; 
+            populateCartPopup();
+            updateTotalPrice();
+            userName = name;
+            userAddress = address;
+        } else {
+            alert('There is no item in the cart');
+        }
+    }
+    checkOutContainer.classList.add("hidden");
 }
