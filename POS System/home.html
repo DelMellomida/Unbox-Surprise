@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +12,15 @@
     <link rel="stylesheet" type="text/css" href="/css/myStyles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Freeman&family=Teachers:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Freeman&family=Teachers:ital,wght@0,400..800;1,400..800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
+
 <body>
     <!--Header Section-->
     <header>
@@ -27,11 +31,11 @@
                 </div>
                 <div class="menu-item-container">
                     <li class="menu-item"><a href="home.html">Home</a></li>
-                    <li class="menu-item"><a href="#">About</a></li>
+                    <li class="menu-item"><a href="about.html">About</a></li>
                     <li class="menu-item"><a href="collections.html">Products</a></li>
                     <li class="menu-item"><a href="contact.html">Contact</a></li>
-                    <li class="cart-btn menu-item" onclick = ""><a><i class="fa-solid fa-cart-shopping"></i></a></li>
-                    <li class="menu-item"><a href="login.html"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+                    <li class="cart-btn menu-item" onclick=""><a><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li class="menu-item"><a href="index.html"><i class="fa-solid fa-right-from-bracket"></i></a></li>
                     <li class="menu hidden"><i class="fa-solid fa-bars"></i></li>
                     <li class="cancel-btn"><i class="fa-solid fa-xmark"></i></li>
                     <div id="cart-summary" class="cart-summary">
@@ -48,25 +52,25 @@
     <!-- Hero Section -->
     <div class="hero swiper">
         <div class="carousel swiper-wrapper">
-            <div class="carousel-item swiper-slide" >
+            <div class="carousel-item swiper-slide">
                 <img src="/assets/bgImage.jpg" alt="New Collection">
                 <div class="carousel-caption">
-                    <h2>Discover Our New Collection</h2>
+                    <h2>Discover Our Latest Collection</h2>
                     <button onclick="location.href='collections.html'">Shop Now</button>
                 </div>
             </div>
-            <div class="carousel-item swiper-slide" >
+            <div class="carousel-item swiper-slide">
                 <img src="/assets/bgImage2.jpg" alt="Special Offer">
                 <div class="carousel-caption">
-                    <h2>Special Offer: 20% Off</h2>
+                    <h2>Exclusive Offer: 20% Off</h2>
                     <button onclick="location.href='collections.html'">Learn More</button>
                 </div>
             </div>
             <div class="carousel-item swiper-slide">
                 <img src="/assets/bgImage3.jpg" alt="Gift Ideas">
                 <div class="carousel-caption">
-                  <h2>Gift Ideas for Every Occasion</h2>
-                  <button onclick="location.href='collections.html'">Browse Gifts</button>
+                    <h2>Perfect Gifts for Every Occasion</h2>
+                    <button onclick="location.href='collections.html'">Browse Gifts</button>
                 </div>
             </div>
         </div>
@@ -74,91 +78,124 @@
         <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         var swiper = new Swiper(".swiper", {
-          spaceBetween: 30,
-          centeredSlides: true,
-          autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-          },
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-          },
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
         });
-      </script>
+    </script>
+
+    <!--Best Sellers-->
+    <div class="gallery-container">
+        <h1 class="gallery-title">Our Best-Selling Products</h1>
+        <div class="gallery-content">
+            <div class="container">
+                <div class="container-img pic1"></div>
+                <div class="pic-title">
+                    <h3><a>Me and Cat</a></h3>
+                </div>
+            </div>
+            <div class="container">
+                <div class="container-img pic2"></div>
+                <div class="pic-title">
+                    <h3><a>Me and My Adventures</a></h3>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!--Why Choose Us Section-->
     <div class="why-choose-us">
         <h1>Why Choose Unbox Surprise?</h1>
         <div class="benefits-container">
             <div class="benefit-box">
-                <i class="fas fa-check-circle"></i>  <h3>Curated with Care</h3>
-                <p>Our boxes are hand-picked with the finest products, ensuring a delightful unboxing experience.</p>
+                <i class="fas fa-check-circle"></i>
+                <h3>Curated with Care</h3>
+                <p>Every box is carefully selected with premium products, ensuring a delightful surprise for you.</p>
             </div>
             <div class="benefit-box">
-                <i class="fas fa-gift"></i>  <h3>Gifts for Every Occasion</h3>
-                <p>We offer a wide variety of boxes to perfectly suit any birthday, holiday, or special event.</p>
+                <i class="fas fa-gift"></i>
+                <h3>Gifts for All Occasions</h3>
+                <p>We offer a variety of boxes to suit any birthday, holiday, or special event.</p>
             </div>
             <div class="benefit-box">
-                <i class="fas fa-star"></i>  <h3>Top-Quality Products</h3>
-                <p>We partner with reputable brands to ensure every item in our boxes is exceptional.</p>
+                <i class="fas fa-star"></i>
+                <h3>Top-Quality Products</h3>
+                <p>We collaborate with reputable brands to guarantee exceptional quality in every box.</p>
             </div>
         </div>
     </div>
 
     <!--Testimonial Section-->
     <div class="testimonial-container">
-        <h1>Testimonials</h1>
+        <h1>What Our Customers Say</h1>
         <div class="testimonial-wrapper">
             <div class="testimonial-box">
                 <div class="testimonial-pic">
-                    <img src="https://images.pexels.com/photos/4927361/pexels-photo-4927361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                    <img
+                        src="https://images.pexels.com/photos/4927361/pexels-photo-4927361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
                 </div>
                 <div class="testimonial-content">
                     <h3>Lisa Wilson</h3>
                     <h5>Denver, CO</h5>
-                    <p>Unboxing my 'Cozy Night In' box was pure indulgence! The incredibly fluffy socks, rich and decadent gourmet hot chocolate, and calming aromatherapy candle were exactly what I needed for a perfectly relaxing evening. It was the ultimate pick-me-up after a long week - thanks Unbox Surprise for creating such a blissful experience!</p>
+                    <p>Unboxing my 'Cozy Night In' box was an indulgent experience! The fluffy socks, rich gourmet hot
+                        chocolate, and calming aromatherapy candle were exactly what I needed for a relaxing evening.
+                        Thanks, Unbox Surprise, for creating such a blissful experience!</p>
                 </div>
             </div>
             <div class="testimonial-box">
                 <div class="testimonial-pic">
-                    <img src="https://images.pexels.com/photos/6507483/pexels-photo-6507483.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                    <img
+                        src="https://images.pexels.com/photos/6507483/pexels-photo-6507483.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
                 </div>
                 <div class="testimonial-content">
                     <h3>David Blaine</h3>
                     <h5>Los Angeles, CA</h5>
-                    <p>Unbox Surprise is my lifesaver for birthdays and holidays! They always have a box that fits the recipient's interests, and the surprise element makes it extra special. No more stressing about finding the perfect gift - Unbox Surprise takes care of everything!</p>
+                    <p>Unbox Surprise is my go-to for birthdays and holidays! They always have a box that perfectly fits
+                        the recipient's interests, making gift-giving easy and special. No more stress about finding the
+                        perfect gift - Unbox Surprise has got it covered!</p>
                 </div>
             </div>
             <div class="testimonial-box">
                 <div class="testimonial-pic">
-                    <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                    <img
+                        src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
                 </div>
                 <div class="testimonial-content">
-                    <h3>Emily Chen</h3>
+                    <h3>Alice Guo</h3>
                     <h5>Austin, TX</h5>
-                    <p>I had a question about customizing a box for my niece's birthday, and the Unbox Surprise customer service team was amazing! They were super helpful and patient, and helped me create the perfect box for her. Not only was the gift a hit, but the entire experience was fantastic. Thanks Unbox Surprise!</p>
+                    <p>I had a question about customizing a box for my niece's birthday, and the Unbox Surprise customer
+                        service team was fantastic! They were super helpful and patient, and helped me create the
+                        perfect box for her. The gift was a hit, and the entire experience was wonderful. Thanks, Unbox
+                        Surprise!</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!--How It Works Section-->
+    <!--How it Works Sections-->
     <section class="how-it-works">
         <h1>How It Works</h1>
         <div class="works-container">
             <div class="work-step">
                 <i class="fas fa-check-circle"></i>
-                <h3>Choose Your Box</h3>
-                <p>Browse our wide selection of curated gift boxes to find the perfect one for your occasion or recipient's interests.</p>
+                <h3>Select Your Box</h3>
+                <p>Explore our wide selection of curated gift boxes to find the perfect one for your occasion or
+                    recipient's interests.</p>
             </div>
             <i class="fas fa-arrow-right arrow"></i>
             <div class="work-step">
@@ -170,12 +207,13 @@
             <div class="work-step">
                 <i class="fas fa-truck"></i>
                 <h3>Relax and Unwind</h3>
-                <p>We handle everything else! Your beautifully packaged gift box will be delivered straight to your recipient's door.</p>
+                <p>We handle everything else! Your beautifully packaged gift box will be delivered straight to your
+                    recipient's door.</p>
             </div>
         </div>
         <a href="collections.html" class="how-it-works-btn">See All Boxes</a>
     </section>
-    
+
 
     <!--Footer Section-->
     <footer>
@@ -194,5 +232,7 @@
     </footer>
 
     <script src="/js/myScript.js"></script>
+
 </body>
+
 </html>
