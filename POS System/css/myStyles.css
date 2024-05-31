@@ -1421,12 +1421,10 @@ p {
 
 .product:hover .title {
     opacity: 0;
-    /* Hide the title on hover */
 }
 
 .desc {
     opacity: 0;
-    /* Initially hide the description */
     transition: opacity 0.3s ease;
     position: absolute;
     width: 100%;
@@ -1435,7 +1433,6 @@ p {
     color: #333333;
     box-sizing: border-box;
     bottom: 0;
-    /* Position the description at the bottom of the product box */
     left: 0;
     text-align: center;
     margin-bottom: 20px;
@@ -1444,7 +1441,6 @@ p {
 
 .product:hover .desc {
     opacity: 1;
-    /* Show the description on hover */
 }
 
 .price {
@@ -1474,7 +1470,6 @@ p {
     visibility: hidden;
     background-color: #F0F0F0;
     width: 101%;
-    /* Adjust to fit the fixed width of the product container */
 }
 
 .actions-wrapper * {
@@ -1494,7 +1489,6 @@ p {
     font-size: 20px;
     background-color: #F0F0F0;
     flex: 1;
-    /* Adjust to fit the flex container */
 }
 
 .wishlist:hover {
@@ -1509,7 +1503,6 @@ p {
     font-size: 20px;
     background-color: #F0F0F0;
     flex: 1;
-    /* Adjust to fit the flex container */
 }
 
 .cart:hover {
