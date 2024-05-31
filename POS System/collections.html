@@ -18,9 +18,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 
 <body>
+    <!--Header Section-->
     <header>
         <div class="navbar stay">
             <nav class="menu-bar">
@@ -32,7 +39,10 @@
                     <li class="menu-item"><a href="about.html">About</a></li>
                     <li class="menu-item"><a href="collections.html">Products</a></li>
                     <li class="menu-item"><a href="contact.html">Contact</a></li>
-                    <li class="cart-btn menu-item" onclick=""><a><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li class="cart-btn menu-item" onclick="toggleCartSummary()">
+                        <a><i class="fa-solid fa-cart-shopping"></i></a>
+                        <span id="cart-count" class="cart-count">0</span>
+                    </li>
                     <li class="menu-item"><a href="index.html"><i class="fa-solid fa-right-from-bracket"></i></a></li>
                     <li class="menu hidden"><i class="fa-solid fa-bars"></i></li>
                     <li class="cancel-btn"><i class="fa-solid fa-xmark"></i></li>
@@ -40,55 +50,92 @@
                         <h2>Cart Summary</h2>
                         <ul id="cart-items"></ul>
                         <p>Total: Php <span id="cart-total">0.00</span></p>
-                        <button class="checkOutBtn">Buy</button>
+                        <button class="checkOutBtn">Checkout</button>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
 
-    <div class="content collections">
-        <h1>Unbox Surprise</h1>
-        <h2>The art of giving, elevated.</h2>
-        <br>
-        <img src="/assets/gift-unscreen.gif">
-    </div>
-
     <div class="notification hidden" id="notification">Item added to cart!</div>
 
-    <div class="checkout-container hidden">
-        <div class="checkout-content">
-            <div class="pic-container">
-                <img src="/assets/chocolates.png">
+    <!--Checkout Section-->
+    <div class='checkout-container hidden'>
+        <div class='window'>
+            <div class='order-info'>
+                <div class='order-info-content'>
+                    <h3>Checkout Summary</h3>
+                    <div class='line'></div>
+                    <ul class='order-list'>
+
+                    </ul>
+                    <div class='line'></div>
+                    <div class='total'>
+                        <span style='float:left;'>
+                            <div class='thin dense'>VAT 15%</div>
+                            <div class='thin dense'>Delivery</div>
+                            TOTAL
+                        </span>
+                        <span style='float:right; text-align:right;'>
+                            <div class='thin dense' id="totalCheckout"></div>
+                            <div class='thin dense' id="delivery">Php 40.00</div>
+                            <div id="totalOverall"></div>
+                        </span>
+                    </div>
+                </div>
             </div>
-            <form class="checkout">
-                <h1>Checkout</h1>
-                <table class="table-layout">
+        </div>
+        <div class='credit-info'>
+            <div class='credit-info-content'>
+                <table class='half-input-table'>
                     <tr>
-                        <td><label>Mode of Payment</label></td>
-                        <td><select>
-                                <option>Visa</option>
-                                <option>GCash</option>
-                                <option selected>Cash</option>
-                            </select></td>
-                    </tr>
-                    <tr>
-                        <td><label>Name</label></td>
-                        <td><input type="text" name="name" class="name"></td>
-                    </tr>
-                    <tr>
-                        <td><label>Address</label></td>
-                        <td><input type="text" name="address" class="address"></td>
+                        <td>
+                            <select id="payment-method" class="dropdown-select">
+                                <option value="visa">Visa</option>
+                                <option value="mastercard">MasterCard</option>
+                                <option value="gcash">GCash</option>
+                                <option value="cash">Cash</option>
+                            </select>
+                        </td>
                     </tr>
                 </table>
-                <div class="buttons">
-                    <input type="button" value="Submit" class="submit" onclick="bought()">
-                    <input type="button" value="Cancel" class="cancel">
-                </div>
-            </form>
+                <img src='/assets/visa.png' height='80' class='credit-card-image' id='credit-card-image'></img>
+                <label id="card-number-label">Card Number</label>
+                <input id="card-number" class='input-field'></input>
+                <label id="card-holder-label">Card Holder</label>
+                <input id="card-holder" class='input-field'></input>
+                <label id="name-label">Name</label>
+                <input id="name" class='input-field' required></input>
+                <label id="address-label">Address</label>
+                <input id="address" class='input-field' required></input>
+                <table class='half-input-table'>
+                    <tr>
+                        <td> <label id="expiration-label">Expires</label>
+                            <input class='input-field inTable' id="expiration"></input>
+                        </td>
+                        <td><label id="cvc-label">CVC</label>
+                            <input class='input-field inTable' id="cvc"></input>
+                        </td>
+                    </tr>
+                </table>
+                <button class='pay-btn' onclick="processCheckout()">Checkout</button>
+                <button class="cancelCheckout-btn">Cancel</button>
+            </div>
         </div>
     </div>
 
+    <div class='success-message hidden'>
+        <h3>Payment Successful!</h3>
+        <p>Thank you for your purchase.</p>
+        <br>
+        <div class="next-steps">
+            <h4>What happens next?</h4>
+            <p>Your order has been successfully processed. Our team will now begin preparing your items for shipment.
+            </p>
+        </div>
+    </div>
+
+    <!--Product Selection Section-->
     <div class="products" id="indulgent">
         <h1 style="padding-top: 1.5%;">Products</h1>
         <nav class="products-categories">
@@ -98,411 +145,448 @@
                 <li><a href="#personalized">Personalized Treasures</a></li>
             </ul>
         </nav>
-
-        <div class="products-box">
-            <h3>Indulgent Delights</h3>
-            <div class="products-container">
-                <div class="box">
-                    <img src="/assets/chocolates.png">
-                    <h2>Artisanal Chocolates</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="chocolate-options" id="chocolate-options">
-                            <option value="80">Regular Chocolate Bar</option>
-                            <option value="225">Box of Chocolates (Assorted)</option>
-                            <option value="300">Premium Chocolate Truffles</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 80</p>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="/assets/teaCoffee.png">
-                    <h2>Special Teas or Coffees</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="teaCoffee-options" id="teaCoffee-options">
-                            <option value="400">Premium Coffee Beans</option>
-                            <option value="250">Loose Leaf Tea</option>
-                            <option value="180">Instant Coffee</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 400</p>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="/assets/snacks.png">
-                    <h2>Gourmet Snacks</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="snacks-options" id="snacks-options">
-                            <option value="100">Premium Coffee Beans</option>
-                            <option value="75">Set of Pens</option>
-                            <option value="200">Planner</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 100</p>
-                    </div>
-                </div>
-            </div>
-            <div class="products-container">
-                <div class="box">
-                    <img src="/assets/baked.png">
-                    <h2>Baked Goods</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="cookies-baked-goods-options" id="cookies-baked-goods-options">
-                            <option value="150">Assorted Artisanal Cookies (Box of 12)</option>
-                            <option value="250">Gourmet Baked Goods Sampler</option>
-                            <option value="200">Customized Cookie Gift Box</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 150</p>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="/assets/jamHoney.png">
-                    <h2>Specialty Jam or Honey</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="honey-jam-options" id="honey-jam-options">
-                            <option value="180">Pure Raw Honey (250g)</option>
-                            <option value="220">Artisanal Fruit Jam (200g)</option>
-                            <option value="300">Gourmet Honey Gift Set</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 180</p>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="/assets/wine.png">
-                    <h2>Premium Alcohol</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="wine-champagne-options" id="wine-champagne-options">
-                            <option value="1500">French Champagne (750ml)</option>
-                            <option value="1200">Italian Red Wine (Bottle)</option>
-                            <option value="1800">Spanish Rioja Wine (750ml)</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 1500</p>
-                    </div>
-                </div>
-                <p id="handcrafted"></p>
-            </div>
-        </div>
-
-        <div class="products-box opposite">
-            <h3 style="padding-top: 1.5%; color: #333333">Handcrafted Luxuries</h3>
-            <div class="products-container">
-                <div class="box">
-                    <img src="/assets/candles.png">
-                    <h2>Handcrafted Candles</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="candle-options" id="candle-options">
-                            <option value="350">Scented Soy Candle</option>
-                            <option value="250">Decorative Beeswax Candle</option>
-                            <option value="500">Aromatherapy Candle Gift Set</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 350</p>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="/assets/bath.png">
-                    <h2>Luxury Bath Products</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="bath-products-options" id="bath-products-options">
-                            <option value="300">Handmade Bath Bombs</option>
-                            <option value="200">Organic Bath Salts</option>
-                            <option value="180">Moisturizing Body Butter</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 300</p>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="/assets/soap.png">
-                    <h2>Scented Soaps</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="soap-options" id="soap-options">
-                            <option value="120">Artisanal Lavender Soap Bar</option>
-                            <option value="200">Citrus Burst Handmade Soap</option>
-                            <option value="300">Floral Scented Soap Gift Set</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 120</p>
-                    </div>
-                </div>
-            </div>
-            <div class="products-container">
-                <div class="box">
-                    <img src="/assets/succulent.png">
-                    <h2>Miniature Succulents</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="succulent-options" id="succulent-options">
-                            <option value="150">Assorted Mini Succulent (Individual Pot)</option>
-                            <option value="400">Succulent Trio in Decorative Planter</option>
-                            <option value="300">DIY Mini Succulent Garden Kit</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 150</p>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="/assets/jewelry.png">
-                    <h2>Handmade Jewelry</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="jewelry-options" id="jewelry-options">
-                            <option value="500">Sterling Silver Pendant Necklace</option>
-                            <option value="350">Handcrafted Gemstone Earrings</option>
-                            <option value="800">Artisanal Beaded Bracelet Set</option>
-                        </select>
-
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 500</p>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="/assets/skincare.png">
-                    <h2>Organic Skincare</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="skincare-options" id="skincare-options">
-                            <option value="250">Organic Facial Cleanser</option>
-                            <option value="350">Natural Face Moisturizer</option>
-                            <option value="450">Botanical Body Scrub</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 250</p>
-                    </div>
-                </div>
-            </div>
-            <div class="products-container">
-                <div class="box">
-                    <img src="/assets/waxmelts.png">
-                    <h2>Handpoured Waxmelts</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="wax-melts-options" id="wax-melts-options">
-                            <option value="120">Vanilla Bean Wax Melts</option>
-                            <option value="150">Lavender Fields Wax Melts</option>
-                            <option value="180">Citrus Burst Wax Melts</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 120</p>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="/assets/vases.png">
-                    <h2>Unique Planters or Vases</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="planters-vases-options" id="planters-vases-options">
-                            <option value="200">Handcrafted Ceramic Planter</option>
-                            <option value="250">Vintage Glass Vase</option>
-                            <option value="300">Artisanal Terracotta Pot</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 200</p>
-                    </div>
-                </div>
-                <p id="personalized"></p>
-            </div>
-        </div>
-
-        <div class="products-box">
-            <h3 style="padding-top: 1.5%;">Personalized Treasures</h3>
-            <div class="products-container">
-                <div class="box">
-                    <img src="/assets/notecards.webp">
-                    <h2>Personalized Notecards</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="note-cards-options" id="note-cards-options">
-                            <option value="100">Set of 20 Personalized Note Cards</option>
-                            <option value="150">Set of 30 Personalized Note Cards</option>
-                            <option value="200">Set of 50 Personalized Note Cards</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 100</p>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="/assets/stationary.jpg">
-                    <h2>Custom Stationery</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="stationary-options" id="stationary-options">
-                            <option value="100">Notebook</option>
-                            <option value="75">Set of Pens</option>
-                            <option value="200">Planner</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 100</p>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="/assets/mug.jpg">
-                    <h2>Customized Mugs</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="mug-options" id="mug-options">
-                            <option value="150">Plain Ceramic Mug</option>
-                            <option value="300">Personalized Mug</option>
-                            <option value="225">Novelty Mug</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 150</p>
-                    </div>
-                </div>
-            </div>
-            <div class="products-container">
-                <div class="box">
-                    <img src="/assets/case.png">
-                    <h2>Customized Phone Case</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="phone-cases-options" id="phone-cases-options">
-                            <option value="150">Basic Custom Phone Case</option>
-                            <option value="250">Premium Custom Phone Case</option>
-                            <option value="350">Luxury Custom Phone Case</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 150</p>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="/assets/frame.png">
-                    <h2>Photo Frames & Album</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="photo-frames-options" id="photo-frames-options">
-                            <option value="150">Custom Engraved Photo Frame</option>
-                            <option value="250">Personalized Photo Album</option>
-                            <option value="350">Deluxe Customized Photo Frame Set</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 150</p>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="/assets/keychain.png">
-                    <h2>Engraved Keychains</h2>
-                    <div class="options">
-                        <h6>Options: </h6>
-                        <select name="keychains-options" id="keychains-options">
-                            <option value="100">Basic Engraved Keychain</option>
-                            <option value="200">Premium Engraved Keychain</option>
-                            <option value="300">Luxury Engraved Keychain</option>
-                        </select>
-                    </div>
-                    <button onclick="showNotification('Item added to the cart')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
-                    <div class="pop-out-box">
-                        <p>Php 100</p>
-                    </div>
-                </div>
-                <p id="handcrafted"></p>
-            </div>
-        </div>
     </div>
+
+    <!--Product Section-->
+    <div class="products-box">
+        <h3>Indulgent Delights</h3>
+        <ul class="listing carousel">
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/chocolates.png" alt="Chocolate" />
+                </a>
+
+                <div class="info">
+                    <div class="title">Artisanal Chocolates</div>
+                    <div class="desc hide">Handcrafted by small-scale chocolatiers who emphasize quality, unique
+                        flavors, and ethical sourcing using traditional methods.</div>
+                    <div class="price">Php 50.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/coffee.png" alt="Coffee" />
+                </a>
+                <div class="note no-stock">Out of stock</div>
+
+                <div class="info">
+                    <div class="title">Special Coffee</div>
+                    <div class="desc hide">Specialty coffee: meticulously sourced, roasted, and brewed, offering unique
+                        flavors; 250 grams.</div>
+                    <div class="price">Php 150.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/snacks.png" alt="Snacks" />
+                </a>
+                <div class="note on-sale">On sale</div>
+
+                <div class="info">
+                    <div class="title"><a href="#">Gourmet Snacks</a></div>
+                    <div class="desc hide">Gourmet snacks: handpicked ingredients, artisanal crafting, delivering
+                        exquisite taste; 150g of mixed nuts.</div>
+                    <div class="price sale">Php 100.00</div>
+                    <div class="price old">Php 120.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/baked.png" alt="baked" />
+                </a>
+
+                <div class="info">
+                    <div class="title">Baked Goods</div>
+                    <div class="desc hide">Baked goods: Freshly baked pastries crafted with care, featuring a variety of
+                        flavors and textures.</div>
+                    <div class="price">Php 120.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/jam.png" alt="Jam" />
+                </a>
+
+                <div class="info">
+                    <div class="title">Artisanal Jam</div>
+                    <div class="desc hide">Artisanal jam: Handmade with ripe, luscious fruits and natural ingredients,
+                        bursting with vibrant flavors.</div>
+                    <div class="price">Php 90.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/wine.png" alt="Premium Alcohol" />
+                </a>
+                <div class="note on-sale">On sale</div>
+
+                <div class="info">
+                    <div class="title"><a href="#">Premium Alcohol</a></div>
+                    <div class="desc hide">Premium alcohol: Indulge in rich, complex flavors with our meticulously aged
+                        whiskey, perfect for savoring slowly.</div>
+                    <div class="price sale">Php 500.00</div>
+                    <div class="price old">Php 600.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="products-box opposite">
+        <h3 style="padding-top: 1.5%; color: #333333" id="handcrafted">Handcrafted Luxuries</h3>
+        <ul class="listing carousel">
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/candles.png" alt="Candles" />
+                </a>
+
+                <div class="info">
+                    <div class="title">Handcrafted Candles</div>
+                    <div class="desc hide">Handcrafted candles: Premium soy wax, infused with essential oils, emitting
+                        calming fragrances.</div>
+                    <div class="price">Php 120.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/bath.png" alt="Luxury Bath Products" />
+                </a>
+
+                <div class="info">
+                    <div class="title">Luxury Bath Products</div>
+                    <div class="desc hide">Luxury bath products: Handcrafted with nourishing ingredients, providing a
+                        lavish bathing experience.</div>
+                    <div class="price">Php 280.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/soap.png" alt="Scented Soaps" />
+                </a>
+
+                <div class="info">
+                    <div class="title">Scented Soaps</div>
+                    <div class="desc hide">Scented soaps: Handcrafted with natural oils, leaving skin refreshed and
+                        delicately scented.</div>
+                    <div class="price">Php 90.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/succulent.png" alt="Miniature Succulents" />
+                </a>
+
+                <div class="info">
+                    <div class="title">Miniature Succulents</div>
+                    <div class="desc hide">Miniature succulents: Handpicked varieties, perfect for small spaces, adding
+                        greenery to any room.</div>
+                    <div class="price">Php 150.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/jewelry.png" alt="Handmade Jewelry" />
+                </a>
+
+                <div class="info">
+                    <div class="title">Handmade Jewelry</div>
+                    <div class="desc hide">Handmade jewelry: Unique designs, crafted with attention to detail, making
+                        each piece special.</div>
+                    <div class="price">Php 200.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/skincare.png" alt="Organic Skincare" />
+                </a>
+
+                <div class="info">
+                    <div class="title">Organic Skincare</div>
+                    <div class="desc hide">Organic skincare: Handcrafted with natural ingredients, nurturing and
+                        rejuvenating skin.</div>
+                    <div class="price">Php 180.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/waxmelts.png" alt="Handpoured Waxmelts" />
+                </a>
+
+                <div class="info">
+                    <div class="title">Handpoured Waxmelts</div>
+                    <div class="desc hide">Handpoured waxmelts: Aromatic blends, created to enhance ambiance and
+                        relaxation.</div>
+                    <div class="price">Php 75.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/planter.png" alt="Unique Planter" />
+                </a>
+
+                <div class="info">
+                    <div class="title">Unique Planter</div>
+                    <div class="desc hide">Unique planter: Handcrafted designs, adding personality to indoor and outdoor
+                        spaces.</div>
+                    <div class="price">Php 160.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="products-box">
+        <h3 style="padding-top: 1.5%;" id="personalized">Personalized Treasures</h3>
+        <ul class="listing carousel">
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/notecards.png" alt="Personalized Notecards" />
+                </a>
+
+                <div class="info">
+                    <div class="title">Personalized Notecards</div>
+                    <div class="desc hide">Personalized notecards: Custom designs, perfect for adding a personal touch
+                        to your messages.</div>
+                    <div class="price">Php 50.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/stationary.png" alt="Custom Stationary" />
+                </a>
+
+                <div class="info">
+                    <div class="title">Custom Stationary</div>
+                    <div class="desc hide">Custom stationary: Personalized designs, ideal for expressing your unique
+                        style in writing.</div>
+                    <div class="price">Php 80.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/mug.png" alt="Customized Mugs" />
+                </a>
+
+                <div class="info">
+                    <div class="title">Customized Mugs</div>
+                    <div class="desc hide">Customized mugs: Personalized with your favorite photos or quotes, making
+                        your mornings brighter.</div>
+                    <div class="price">Php 100.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/case.png" alt="Customized Phone Case" />
+                </a>
+
+                <div class="info">
+                    <div class="title">Customized Phone Case</div>
+                    <div class="desc hide">Customized phone case: Personalized protection for your device, reflecting
+                        your style and personality.</div>
+                    <div class="price">Php 120.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/frame.png" alt="Photo Frame" />
+                </a>
+
+                <div class="info">
+                    <div class="title">Photo Frame</div>
+                    <div class="desc hide">Photo frame: Elegant designs, perfect for displaying your cherished memories
+                        in style.</div>
+                    <div class="price">Php 150.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+            <li class="product">
+                <a class="img-wrapper" href="#">
+                    <img src="/assets/keychain.png" alt="Engraved Keychains" />
+                </a>
+                <div class="info">
+                    <div class="title">Engraved Keychains</div>
+                    <div class="desc hide">Engraved keychains: Personalized with names or messages, perfect for adding a
+                        special touch to your keys.</div>
+                    <div class="price">Php 70.00</div>
+                </div>
+
+                <div class="actions-wrapper">
+                    <a href="#" class="add-btn wishlist">Wishlist</a>
+                    <a class="add-btn cart" onclick="showNotification('Item added to the cart')">Cart</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!--Footer Section-->
     <footer>
         <div class="footer-content">
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+            <div class="quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="collections.html">Products</a></li>
+                    <li><a href="home.html">Blogs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="home.html">Privacy Policy</a></li>
+                </ul>
             </div>
+
+            <div class="subscription-form">
+                <h3>Subscribe to our Newsletter</h3>
+                <form>
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <h3>Contact Us</h3>
+                <p>Email: info@example.com</p>
+                <p>Phone: +1 123 456 7890</p>
+            </div>
+
             <div class="location-icons">
                 <span>New York, NY</span>
                 <span>London, UK</span>
                 <span>Tokyo, Japan</span>
             </div>
+
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Unbox Surprise. All Rights Reserved.</p>
         </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.carousel').slick({
+                slidesToShow: 2.6,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                centerMode: true,
+                prevArrow: '<button type="button" class="slick-prev"><i class="fa-solid fa-chevron-left"></i></button>',
+                nextArrow: '<button type="button" class="slick-next"><i class="fa-solid fa-chevron-right"></i></button>',
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ],
+            });
+        });
+    </script>
+
     <script src="/js/myScript.js"></script>
 </body>
 
