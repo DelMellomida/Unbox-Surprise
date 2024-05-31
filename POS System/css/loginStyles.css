@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     text-decoration: none;
@@ -7,20 +7,20 @@
     font-style: normal;
 }
 
-.logo-container{
+.logo-container {
     position: absolute;
-    background-color: burlywood;
+    background-color: #008080;
     width: 100vw;
     opacity: 0.8;
 }
 
-.logo-container img{
+.logo-container img {
     width: 6vw;
     height: 6vw;
     margin-left: 5%;
 }
 
-.login-content{
+.login-content {
     background-image: url("/assets/loginBgImage.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -34,7 +34,7 @@
     z-index: 100;
 }
 
-.user-input{
+.user-input {
     margin: 12% 20% 5% 10%;
     display: flex;
     align-items: stretch;
@@ -47,12 +47,12 @@
     box-shadow: 7px 5px #333333;
 }
 
-.user-input form{
+.user-input form {
     margin: 5% 10% 10% 10%;
     text-align: center;
 }
 
-.user-input label{
+.user-input label {
     font-size: 25px;
     font-weight: bold;
     display: flex;
@@ -60,7 +60,8 @@
     text-shadow: 1px 1px #333333;
 }
 
-.user-input input, button{
+.user-input input,
+button {
     font-size: 15px;
     border-radius: 10px;
     margin: 5px;
@@ -71,11 +72,12 @@
     transition: all 0.3s ease-in-out;
 }
 
-.user-input .username, .password{
+.user-input .username,
+.password {
     width: 22vw !important;
 }
 
-.user-input h1{
+.user-input h1 {
     margin: 6vh 2vw 1vh 2vw;
     text-align: center;
     font-size: 35px;
@@ -84,12 +86,14 @@
     text-shadow: 3px 3px rgb(169, 95, 95);
 }
 
-.user-input input:hover, .user-input button:hover{
+.user-input input:hover,
+.user-input button:hover {
     transform: translateY(-8px);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-.user-input input:focus, .user-input button:focus{
+.user-input input:focus,
+.user-input button:focus {
     outline: none;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
