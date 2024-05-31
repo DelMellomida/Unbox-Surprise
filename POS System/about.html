@@ -22,8 +22,9 @@
 </head>
 
 <body>
+    <!--Header Section-->
     <header>
-        <div class="navbar">
+        <div class="navbar stay">
             <nav class="menu-bar">
                 <div class="logo-container">
                     <a href="index.html"><img class="logo-design" src="/assets/logo.png"></a>
@@ -33,7 +34,10 @@
                     <li class="menu-item"><a href="about.html">About</a></li>
                     <li class="menu-item"><a href="collections.html">Products</a></li>
                     <li class="menu-item"><a href="contact.html">Contact</a></li>
-                    <li class="cart-btn menu-item" onclick=""><a><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li class="cart-btn menu-item" onclick="toggleCartSummary()">
+                        <a><i class="fa-solid fa-cart-shopping"></i></a>
+                        <span id="cart-count" class="cart-count">0</span>
+                    </li>
                     <li class="menu-item"><a href="index.html"><i class="fa-solid fa-right-from-bracket"></i></a></li>
                     <li class="menu hidden"><i class="fa-solid fa-bars"></i></li>
                     <li class="cancel-btn"><i class="fa-solid fa-xmark"></i></li>
@@ -41,6 +45,7 @@
                         <h2>Cart Summary</h2>
                         <ul id="cart-items"></ul>
                         <p>Total: Php <span id="cart-total">0.00</span></p>
+                        <button class="checkOutBtn">Checkout</button>
                     </div>
                 </div>
             </nav>
@@ -107,84 +112,68 @@
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="our-team">
                     <div class="picture">
-                        <img class="img-fluid" src="https://picsum.photos/130/130?image=1027">
+                        <img class="img-fluid" src="/assets/ch1.jpg">
                     </div>
                     <div class="team-content">
                         <h3 class="name">Sophia Lee</h3>
                         <h4 class="title">Chief Creative Officer</h4>
                     </div>
                     <ul class="social">
-                        <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-facebook"
-                                aria-hidden="true"></a></li>
-                        <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-twitter"
-                                aria-hidden="true"></a></li>
-                        <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-google-plus-g"
-                                aria-hidden="true"></a></li>
-                        <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-linkedin"
-                                aria-hidden="true"></a></li>
+                        <li><a href="https://facebook.com" class="fa-brands fa-facebook" aria-hidden="true"></a></li>
+                        <li><a href="https://twitter.com" class="fa-brands fa-twitter" aria-hidden="true"></a></li>
+                        <li><a href="https://google.com" class="fa-brands fa-google-plus-g" aria-hidden="true"></a></li>
+                        <li><a href="https://linkedin.com" class="fa-brands fa-linkedin" aria-hidden="true"></a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="our-team">
                     <div class="picture">
-                        <img class="img-fluid" src="https://picsum.photos/130/130?image=839">
+                        <img class="img-fluid" src="/assets/ch2.jpg">
                     </div>
                     <div class="team-content">
                         <h3 class="name">Liam Johnson</h3>
                         <h4 class="title">Marketing Manager</h4>
                     </div>
                     <ul class="social">
-                        <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-facebook"
-                                aria-hidden="true"></a></li>
-                        <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-twitter"
-                                aria-hidden="true"></a></li>
-                        <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-google-plus-g"
-                                aria-hidden="true"></a></li>
-                        <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-linkedin"
-                                aria-hidden="true"></a></li>
+                        <li><a href="https://facebook.com" class="fa-brands fa-facebook" aria-hidden="true"></a></li>
+                        <li><a href="https://twitter.com" class="fa-brands fa-twitter" aria-hidden="true"></a></li>
+                        <li><a href="https://google.com" class="fa-brands fa-google-plus-g" aria-hidden="true"></a></li>
+                        <li><a href="https://linkedin.com" class="fa-brands fa-linkedin" aria-hidden="true"></a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="our-team">
                     <div class="picture">
-                        <img class="img-fluid" src="https://picsum.photos/130/130?image=856">
-                    </div>
-                    <div class="team-content">
-                        <h3 class="name">Olivia Smith</h3>
-                        <h4 class="title">Product Designer</h4>
-                    </div>
-                    <ul class="social">
-                        <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-facebook"
-                                aria-hidden="true"></a></li>
-                        <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-twitter"
-                                aria-hidden="true"></a></li>
-                        <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-google-plus-g"
-                                aria-hidden="true"></a></li>
-                        <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-linkedin"
-                                aria-hidden="true"></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="our-team">
-                    <div class="picture">
-                        <img class="img-fluid" src="https://picsum.photos/130/130?image=836">
+                        <img class="img-fluid" src="/assets/ch3.jpg">
                     </div>
                     <div class="team-content">
                         <h3 class="name">Ethan Brown</h3>
+                        <h4 class="title">Product Designer</h4>
+                    </div>
+                    <ul class="social">
+                        <li><a href="https://facebook.com" class="fa-brands fa-facebook" aria-hidden="true"></a></li>
+                        <li><a href="https://twitter.com" class="fa-brands fa-twitter" aria-hidden="true"></a></li>
+                        <li><a href="https://google.com" class="fa-brands fa-google-plus-g" aria-hidden="true"></a></li>
+                        <li><a href="https://linkedin.com" class="fa-brands fa-linkedin" aria-hidden="true"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="our-team">
+                    <div class="picture">
+                        <img class="img-fluid" src="/assets/ch4.jpg">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="name">Olivia Smith</h3>
                         <h4 class="title">Operations Manager</h4>
                     </div>
                     <ul class="social">
-                        <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-facebook"
-                                aria-hidden="true"></a></li>
-                        <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-twitter"
-                                aria-hidden="true"></a></li>
-                        <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-google-plus-g"
-                                aria-hidden="true"></a></li>
-                        <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa-brands fa-linkedin"
-                                aria-hidden="true"></a></li>
+                        <li><a href="https://facebook.com" class="fa-brands fa-facebook" aria-hidden="true"></a></li>
+                        <li><a href="https://twitter.com" class="fa-brands fa-twitter" aria-hidden="true"></a></li>
+                        <li><a href="https://google.com" class="fa-brands fa-google-plus-g" aria-hidden="true"></a></li>
+                        <li><a href="https://linkedin.com" class="fa-brands fa-linkedin" aria-hidden="true"></a></li>
                     </ul>
                 </div>
             </div>
@@ -196,16 +185,48 @@
     <!--Footer Section-->
     <footer>
         <div class="footer-content">
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+            <div class="quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="collections.html">Products</a></li>
+                    <li><a href="home.html">Blogs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="home.html">Privacy Policy</a></li>
+                </ul>
             </div>
+
+            <div class="subscription-form">
+                <h3>Subscribe to our Newsletter</h3>
+                <form>
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <h3>Contact Us</h3>
+                <p>Email: info@example.com</p>
+                <p>Phone: +1 123 456 7890</p>
+            </div>
+
             <div class="location-icons">
                 <span>New York, NY</span>
                 <span>London, UK</span>
                 <span>Tokyo, Japan</span>
             </div>
+
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Unbox Surprise. All Rights Reserved.</p>
         </div>
     </footer>
 
